@@ -8,7 +8,18 @@
 
 import UIKit
 
-extension UIViewController {
+enum BorderStyle {
+    case gray
+}
+
+extension UIView {
     
+    func setBorder(style: BorderStyle) {
+        switch style {
+        case .gray:
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.darkGray.cgColor
+        }
+    }
     
 }
