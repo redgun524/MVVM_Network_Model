@@ -28,16 +28,5 @@ class ProfileVC: UIViewController {
 extension ProfileVC {
     
     func initViews() {
-        let tableView = UITableView().then {
-            $0.delegate = self
-        }
-    }
-}
-
-extension ProfileVC: UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

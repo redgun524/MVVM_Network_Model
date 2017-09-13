@@ -30,25 +30,10 @@ extension HomeVC {
     func initViews() {
         view.backgroundColor = .white
         
-        let txtTitle = UILabel().then {
-            $0.text = "매칭화면 뿜뿜"
-        }
+        let txtTitle = UILabel().then { $0.text = "매칭화면 뿜뿜" }
         
-        editID = BorderedTextField().then {
-            $0.placeholder = "아이디"
-            $0.layer.borderWidth = 1
-            $0.layer.borderColor = UIColor.darkGray.cgColor
-            $0.backgroundColor = UIColor(hex: 0xeeeeee, alpha: 0.4)
-            $0.setStyle(.base)
-        }
-        
-        editPassword = BorderedTextField().then {
-            $0.placeholder = "비밀번호"
-            $0.layer.borderWidth = 1
-            $0.layer.borderColor = UIColor.darkGray.cgColor
-            $0.backgroundColor = UIColor(hex: 0xeeeeee, alpha: 0.4)
-            $0.setStyle(.base)
-        }
+        editID = BorderedTextField().then { $0.placeholder = "아이디" }
+        editPassword = BorderedTextField().then { $0.placeholder = "비밀번호" }
         
         view.addSubview(txtTitle)
         view.addSubview(editID)

@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-class MatchingVO {
+struct MatchingVO {
     
     init(json: JSON) {
         partnerName = json["name"].string
@@ -45,7 +45,7 @@ enum MatchingStatus: Int {
     case matching = 300
     case end = 400
     
-    var asString: String {
+    var string: String {
         switch self {
         case .waiting:
             return "입금 확인 중"
@@ -55,6 +55,19 @@ enum MatchingStatus: Int {
             return "매칭 완료"
         case .end:
             return "매칭 종료"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .waiting:
+            return #imageLiteral(resourceName: "status_waiting")
+        case .money:
+            return #imageLiteral(resourceName: "status_end")
+        case .matching:
+            return #imageLiteral(resourceName: "status_matching")
+        case .end:
+            return #imageLiteral(resourceName: "status_end")
         }
     }
 }

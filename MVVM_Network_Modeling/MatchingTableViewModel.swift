@@ -10,12 +10,14 @@ import UIKit
 
 class MatchingTableViewModel: NSObject {
     
-    fileprivate lazy var matchingList = [MatchingVO]()
+    fileprivate lazy var modelList = [MatchingCellViewModel]()
     
     func getMatchingList(id: Int, errorHandling: ErrorHandling, completion: (() -> ())? = nil) {
         
         ApiManager.matching.fetchMatchingList(id: id, errorHandling: errorHandling) { matchingList in
-            self.matchingList = matchingList
+            self.modelList = matchingList.map {
+                return MatchingCellViewModel(matching: $0)
+            }
             completion?()
         }
     }
@@ -23,13 +25,11 @@ class MatchingTableViewModel: NSObject {
 
 extension MatchingTableViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matchingList.count
+        return modelList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = matchingList[indexPath.row]
-        let cell = tableView.dequeueReusableCell(MatchingCell.self)
-        cell.configure(item)
-        return cell
+        let cvm = modelList[indexPath.row]
+        return cvm.cellInstance(tableView, indexPath: indexPath)
     }
 }

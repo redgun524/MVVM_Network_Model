@@ -14,49 +14,50 @@ class MatchingCell: UITableViewCell {
     lazy var txtName = UILabel()
     lazy var txtStatus = UILabel()
     
-    var matching: MatchingVO!
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initContentViews()
         
-        contentView.addSubview(imgStatus)
-        contentView.addSubview(txtName)
-        contentView.addSubview(txtStatus)
-        
-        imgStatus.snp.makeConstraints {(make) in
-            make.left.equalTo(8)
-            make.centerY.equalTo(contentView)
-        }
-        
-        txtName.snp.makeConstraints{ (make) in
-            make.leading.equalTo(imgStatus.snp.trailing).offset(8)
-            make.bottom.equalTo(imgStatus.snp.centerY).offset(5)
-        }
-        
-        txtStatus.snp.makeConstraints{ (make) in
-            make.leading.equalTo(txtName)
-            make.top.equalTo(txtName.snp.bottom).offset(5)
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    var matching: MatchingVO? {
+        didSet {
+            txtName.text = matching?.partnerName
+            imgStatus.image = matching?.status?.image
+            txtStatus.text = matching?.status?.string
+        }
+    }
+    
     func configure(_ matching: MatchingVO) {
         self.matching = matching
-        txtName.text = matching.partnerName
-        configureImageStatus()
-        configureTextStatus()
+        
     }
+}
+
+extension MatchingCell {
     
-    func configureImageStatus() {
-        let viewModel = StatusImageViewModel(matching)
-        imgStatus.configure(viewModel)
-    }
-    
-    func configureTextStatus() {
-        let viewModel = StatusLabelViewModel(matching)
-        txtStatus.configure(viewModel)
+    func initContentViews() {
+        contentView.addSubview(imgStatus)
+        contentView.addSubview(txtName)
+        contentView.addSubview(txtStatus)
+        
+        imgStatus.snp.makeConstraints {
+            $0.left.equalTo(8)
+            $0.centerY.equalTo(contentView)
+        }
+        
+        txtName.snp.makeConstraints{
+            $0.leading.equalTo(imgStatus.snp.trailing).offset(8)
+            $0.bottom.equalTo(imgStatus.snp.centerY).offset(5)
+        }
+        
+        txtStatus.snp.makeConstraints{
+            $0.leading.equalTo(txtName)
+            $0.top.equalTo(txtName.snp.bottom).offset(5)
+        }
     }
 }

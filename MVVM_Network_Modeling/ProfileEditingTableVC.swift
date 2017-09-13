@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileEditingTableVC: CustomTableVC {
+class ProfileEditingTableVC: BaseTableVC {
         
     override func viewDidLoad() {
         super.viewDidLoad()

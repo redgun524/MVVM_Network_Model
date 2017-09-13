@@ -14,7 +14,7 @@ protocol SimpleAlertProtocol: class {
 }
 
 extension SimpleAlertProtocol {
-    func simpleAlert(vc: UIViewController, title: String, message msg: String, handler: ((UIAlertAction) -> Void)?) {
+    func simpleAlert(vc: UIViewController, title: String, message msg: String, handler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title : title, message: msg,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .cancel, handler: handler)
@@ -22,7 +22,7 @@ extension SimpleAlertProtocol {
         vc.present(alert, animated: false, completion: nil)
     }
     
-    func simpleAlertWithCancel(vc: UIViewController, title: String, message msg: String, okButtonHandler handler: ((UIAlertAction) -> Void)?, cancelButtonHandler cancelHandler: ((UIAlertAction) -> Void)?) {
+    func simpleAlertWithCancel(vc: UIViewController, title: String, message msg: String, okButtonHandler handler: ((UIAlertAction) -> Void)?, cancelButtonHandler cancelHandler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title : title, message: msg,
                                       preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: cancelHandler)

@@ -8,12 +8,20 @@
 
 import UIKit
 
-class BorderedTextField: UITextField {
+enum TextFieldBorderStyle {
+    case gray
+}
+
+class BorderedTextField: BaseTextField {
     
-    let inset = UIEdgeInsetsMake(5, 8, 5, 8)
+    var inset = UIEdgeInsetsMake(5, 8, 5, 8)
     
-    init() {
-        super.init(frame: CGRect.zero)
+    init(inset: UIEdgeInsets? = nil, style: TextFieldStyle = .base, borderStyle: TextFieldBorderStyle = .gray) {
+        super.init(style: style)
+        if inset != nil {
+            self.inset = inset!
+        }
+        setBorder(style: borderStyle)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +38,14 @@ class BorderedTextField: UITextField {
     
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, inset)
+    }
+    
+    func setBorder(style: TextFieldBorderStyle) {
+        switch style {
+        case .gray:
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.darkGray.cgColor
+        }
     }
 }
 

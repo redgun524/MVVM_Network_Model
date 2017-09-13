@@ -24,11 +24,11 @@ class MatchingVC: BaseVC {
 extension MatchingVC {
     
     func initViews() {
-        let txtTitle = UILabel().then {
+        let txtTitle = BaseLabel().then {
             $0.text = "타이틀"
         }
         
-        let txtDesc = UILabel().then {
+        let txtDesc = BaseLabel().then {
             $0.text = "이것은 설명이다 설명. 설명을 하는 텍스트란 말이다."
             $0.setStyle(.description)
         }
