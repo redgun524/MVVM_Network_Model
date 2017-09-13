@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MatchingVC: CustomVC {
+class MatchingVC: BaseVC {
     
     var tableView: UITableView!
     lazy var tableViewModel = MatchingTableViewModel()
@@ -35,7 +35,7 @@ extension MatchingVC {
         
         tableView = UITableView().then {
             $0.register(MatchingCell.self)
-            $0.delegate = tableViewModel
+            $0.delegate = self
             $0.dataSource = tableViewModel
             $0.rowHeight = 70
         }
@@ -66,6 +66,6 @@ extension MatchingVC {
 extension MatchingVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        //SomeThing
     }
 }
