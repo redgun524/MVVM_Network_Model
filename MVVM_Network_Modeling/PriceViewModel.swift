@@ -7,7 +7,7 @@
 //
 
 protocol PriceViewModelProtocol {
-    var request: RequestVO { get }
+    init(request: RequestVO)
     var price: String { get }
     var name: String { get }
     var didRequestChanged: ((PriceViewModelProtocol) -> ())? { get set}
@@ -16,9 +16,9 @@ protocol PriceViewModelProtocol {
 
 class PriceViewModel: PriceViewModelProtocol {
     
-    internal var request: RequestVO
+    var request: RequestVO
     
-    init(request: RequestVO) {
+    required init(request: RequestVO) {
         self.request = request
     }
     
