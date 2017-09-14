@@ -138,10 +138,10 @@ ErrorHandling 프로토콜을 만들어 BaseVC에서 상속받아 showError(:Err
 
 ## 3.1 초기 설정 - 프로젝트 설정
 
-![초기 설정스크린샷](https://github.com/redgun524/MVVM_Network_Model/blob/master/images/withoutstoryboard1.png)
 ~~~
 1. 프로젝트 설정 General - Deployment Info - Main Interface을 비워준다.
 ~~~
+![초기 설정스크린샷](https://github.com/redgun524/MVVM_Network_Model/blob/master/images/withoutstoryboard1.png)
 
 ## 3.2 초기 설정 - 초기 화면 설정
 ~~~
